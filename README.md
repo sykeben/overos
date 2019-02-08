@@ -29,4 +29,8 @@ If the kernel is not told to run any of these, it will search for an executable 
 If you can use `make`, it is the easiest possible way to build OverOS. Avaliable targets are:
 - `all` ~ Builds all executables, including optional ones.
 - `base` ~ Only builds the bootloader, kernel, and other essential executables.
-- `commands` ~ Builds all the commands in `\cmd`.
+- `commands` ~ Builds all the commands in `\cmd`. 
+
+
+### Running OverOS
+It's incredebly easy to "boot" OverOS, simply execute `boot` after compiling.
