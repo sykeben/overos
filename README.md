@@ -1,5 +1,5 @@
-# OverOS
-## Multi-platform C++ "overlaying" OS. 
+## OverOS
+### Multi-platform C++ "overlaying" OS. 
 
 
 ### Features
