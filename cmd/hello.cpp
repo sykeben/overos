@@ -33,8 +33,7 @@ using namespace std;
 	const char _TERM = '\r';
 #endif
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
 	cout << "Hello, World! I'm gonna test arguments now!" << _TERM;
 	cout << "Arguments used with \"" << argv[0] << "\":" << _TERM;
   for (int n = 1; n < argc; n++)

@@ -33,7 +33,7 @@ void clear_screen() {
 	#ifdef _WIN32
 		system("cls");
 	#else
-		system ("clear");
+		system("clear");
 	#endif
 }
 
@@ -94,21 +94,27 @@ int main(int argc, char** argv) {
 		cout << "~> ";
 		cin.getline(_INPUT, _MAXIN, _TERM);
 		
-		// Internal commands.
+		// Internal commands & externel executor.
 		if (!strcmp(_INPUT, "help")) {
+			// Help
 			cout << "Internal shell commands: help exitnow clr sysver listcmds" << _TERM;
 			cout << "The prompt may also run executables from the \\cmd directory." << _TERM;
 		} else if (!strcmp(_INPUT, "exitnow")) {
+			// ExitNow
 			cout << "Exiting OverOS now..." << _TERM;
 			_EXIT = true;
 		} else if (!strcmp(_INPUT, "clr")) {
+			// Clr
 			clear_screen(); _CLEARED = true;
 		} else if (!strcmp(_INPUT, "sysver")) {
+			// SysVer
 			cout << "OverOS System Version " << _VMAJOR << '.' << _VMINOR << '.' << _VREVISION << _TERM;
 		} else if (!strcmp(_INPUT, "listcmds")) {
+			// ListCmds
 			cout << "Files in the \\cmd directory:" << _TERM;
 			system(_LISTCMDS.c_str());
 		} else {
+			// Externel Executor
 			_INPUTSTR = _INPUT;
 			#ifdef _WIN32
 				_CMDF = ".\\cmd\\" + _INPUTSTR.substr(0, _INPUTSTR.find(' '));
@@ -123,6 +129,7 @@ int main(int argc, char** argv) {
 					system(("./cmd/" + _INPUTSTR).c_str());
 				#endif
 			} else {
+				// Invalid Error
 				cout << "Error: Invalid command, " << _INPUT << "." << _TERM;
 			}
 		}
