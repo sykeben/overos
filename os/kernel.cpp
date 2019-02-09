@@ -67,7 +67,7 @@ bool fexists(const string& name) {
 	const string _LISTCMDS = "dir cmd /B /O:N";
 #else
 	const char _TERM = '\r';
-	const string _LISTER = "ls cmd -x";
+	const string _LISTCMDS = "ls cmd -x";
 #endif
 
 int main(int argc, char** argv) {
