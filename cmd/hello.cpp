@@ -27,11 +27,7 @@
 
 using namespace std;
 
-#ifdef _WIN32 
-	const char _TERM = '\n';
-#else
-	const char _TERM = '\r';
-#endif
+const char _TERM = '\n'; // Terminator character (may need to be changed for your system).
 
 int main(int argc, char** argv) {
 	cout << "Hello, World! I'm gonna test arguments now!" << _TERM;

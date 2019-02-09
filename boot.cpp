@@ -34,11 +34,7 @@ void clear_screen() {
 	#endif
 }
 
-#ifdef _WIN32 
-	const char _TERM = '\n';
-#else
-	const char _TERM = '\r';
-#endif
+const char _TERM = '\n'; // Terminator character (may need to be changed for your system).
 
 int main(int argc, char** argv) {
 	// This is a simple system loader, it boots the kernel.

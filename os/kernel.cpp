@@ -62,11 +62,10 @@ bool fexists(const string& name) {
     }   
 }
 
+const char _TERM = '\n'; // Terminator character (may need to be changed for your system).
 #ifdef _WIN32 
-	const char _TERM = '\n';
 	const string _LISTCMDS = "dir cmd /B /O:N";
 #else
-	const char _TERM = '\r';
 	const string _LISTCMDS = "ls cmd -x";
 #endif
 
