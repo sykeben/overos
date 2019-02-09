@@ -27,7 +27,9 @@ If you can use `make`, it is the easiest possible way to build OverOS. Avaliable
 - `all` ~ Builds all executables, including optional ones.
 - `base` ~ Only builds the bootloader, kernel, and other essential executables.
 - `kautorun` ~ Builds the kernel autorun application, this may not be critical.
-- `commands` ~ Builds all the commands in `/cmd`. 
+- `commands` ~ Builds all the commands in `/cmd`.
+
+Otherwise, you can download [the latest release](https://github.com/sykeben/overos/releases/latest). 
 
 
 ### Running OverOS
