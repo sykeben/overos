@@ -1,5 +1,5 @@
 /*
- * boot.cpp
+ * boot.cpp - OverOS kernel booter.
  * 
  * Copyright 2019 thatg <thatg@DESKTOP-RI4LHCA>
  * 

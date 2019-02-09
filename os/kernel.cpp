@@ -1,5 +1,5 @@
 /*
- * kernel.cpp
+ * kernel.cpp - OverOS kernel.
  * 
  * Copyright 2019 thatg <thatg@DESKTOP-RI4LHCA>
  * 
@@ -26,10 +26,11 @@
 #include <fstream>
 #include <string.h>
 
+// Set up all the extra garbage.
 using namespace std;
-int _VMAJOR = 0; int _VMINOR = 1; int _VREVISION = 4;
+int _VMAJOR = 0; int _VMINOR = 1; int _VREVISION = 5;
 bool _EXIT = false; int _EXITCODE = 0; bool _CLEARED = false;
-const int _MAXIN = 100; char _INPUT[_MAXIN]; string _INPUTSTR;
+const int _MAXIN = 255; char _INPUT[_MAXIN]; string _INPUTSTR;
 string _CMDF; string _CMDFWIN; string _CMDRUN;
 
 void clear_screen() {
@@ -75,6 +76,11 @@ int main(int argc, char** argv) {
 	
 	// Prepare kernel enviroment.
 	cout << "Kernel started, getting ready..." << _TERM;
+	#ifdef _WIN32
+		if (fexists(".\\os\\kautorun.exe")) system(".\\os\\kautorun");
+	#else
+		if (fexists("./os/kautorun")) system("./os/kautorun");
+	#endif
 	settitle("OverOS Shell");
 	
 	// Let the user know the kernel & shell are ready.
@@ -85,38 +91,35 @@ int main(int argc, char** argv) {
 	while (!_EXIT) {
 		
 		// Get user command input.
-		if (_CLEARED) {
-			_CLEARED = false;
-		} else {
-			cout << _TERM;
-		}
+		if (_CLEARED) _CLEARED = false; else cout << _TERM;
 		cout << "~> ";
 		cin.getline(_INPUT, _MAXIN, _TERM);
 		
 		// Internal commands & externel executor.
 		if (!strcmp(_INPUT, "help")) {
-			// Help
+			// Help //
 			cout << "Internal shell commands: help exitnow clr sysver listcmds" << _TERM;
 			cout << "The prompt may also run executables from the \\cmd directory." << _TERM;
 		} else if (!strcmp(_INPUT, "exitnow")) {
-			// ExitNow
+			// ExitNow //
 			cout << "Exiting OverOS now..." << _TERM;
 			_EXIT = true; _EXITCODE = 0;
 		} else if (!strcmp(_INPUT, "clr")) {
-			// Clr
+			// Clr //
 			clear_screen(); _CLEARED = true;
 		} else if (!strcmp(_INPUT, "sysver")) {
-			// SysVer
+			// SysVer //
 			cout << "OverOS System Version " << _VMAJOR << '.' << _VMINOR << '.' << _VREVISION << _TERM;
 		} else if (!strcmp(_INPUT, "listcmds")) {
-			// ListCmds
+			// ListCmds //
 			cout << "Files in the \\cmd directory:" << _TERM;
 			system(_LISTCMDS.c_str());
 		} else {
-			// Externel Executor
+			// Externel Executor //
 			_INPUTSTR = _INPUT;
 			#ifdef _WIN32
 				_CMDF = ".\\cmd\\" + _INPUTSTR.substr(0, _INPUTSTR.find(' '));
+				_CMDF += ".exe";
 			#else
 				_CMDF = "./cmd/" + _INPUTSTR.substr(0, _INPUTSTR.find(' '));
 			#endif
@@ -128,7 +131,7 @@ int main(int argc, char** argv) {
 					system(("./cmd/" + _INPUTSTR).c_str());
 				#endif
 			} else {
-				// Invalid Error
+				// Invalid Error //
 				cout << "Error: Invalid command, " << _INPUT << "." << _TERM;
 			}
 		}

@@ -1,5 +1,5 @@
 /*
- * hello.cpp - OverOS's first command!
+ * kautorun.cpp - OverOS kernel autorun application.
  * 
  * Copyright 2019 thatg <thatg@DESKTOP-RI4LHCA>
  * 
@@ -22,7 +22,6 @@
  */
 
 
-#include <iomanip>
 #include <iostream>
 
 using namespace std;
@@ -34,11 +33,7 @@ using namespace std;
 #endif
 
 int main(int argc, char** argv) {
-	cout << "Hello, World! I'm gonna test arguments now!" << _TERM;
-	cout << "Arguments used with \"" << argv[0] << "\":" << _TERM;
-  for (int n = 1; n < argc; n++)
-    cout << setw(2) << n << ": " << argv[n] << _TERM;
-  return 0;
+	cout << "Running kernel autorun application..." << _TERM;
 	return 0;
 }
 
