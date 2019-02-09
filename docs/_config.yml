@@ -1,3 +1,4 @@
-theme: jekyll-theme-slate
 title: OverOS
 description: Multi-platform C++ "overlaying" OS.
+theme: jekyll-theme-slate
+show_downloads: true
