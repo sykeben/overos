@@ -110,10 +110,18 @@ int main(int argc, char** argv) {
 			system(_LISTCMDS.c_str());
 		} else {
 			_INPUTSTR = _INPUT;
-			_CMDF = ".\\cmd\\" + _INPUTSTR.substr(0, _INPUTSTR.find(' '));
+			#ifdef _WIN32
+				_CMDF = ".\\cmd\\" + _INPUTSTR.substr(0, _INPUTSTR.find(' '));
+			#else
+				_CMDF = "./cmd/" + _INPUTSTR.substr(0, _INPUTSTR.find(' '));
+			#endif
 			_CMDFWIN = _CMDF + ".exe";
 			if (fexists(_CMDF) || fexists(_CMDFWIN)) {
-				system((".\\cmd\\" + _INPUTSTR).c_str());
+				#ifdef _WIN32
+					system((".\\cmd\\" + _INPUTSTR).c_str());
+				#else
+					system(("./cmd/" + _INPUTSTR).c_str());
+				#endif
 			} else {
 				cout << "Error: Invalid command, " << _INPUT << "." << _TERM;
 			}

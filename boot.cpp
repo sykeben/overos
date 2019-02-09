@@ -47,6 +47,10 @@ int main(int argc, char** argv) {
 	cout << "[ OverOS Boot ]" << _TERM;
 	cout << "Starting the kernel..." << _TERM;
 	
-	system(".\\os\\kernel"); // Begin kernel execution.
+	#ifdef _WIN32
+		system(".\\os\\kernel"); // Begin kernel execution (win32).
+	#else
+		system("./os/kernel"); // Begin kernel execution (posix).
+	#endif
 	return 0;
 }
