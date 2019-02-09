@@ -27,7 +27,10 @@
 #include <string.h>
 
 using namespace std;
-int _VMAJOR = 0; int _VMINOR = 1; int _VREVISION = 3;
+int _VMAJOR = 0; int _VMINOR = 1; int _VREVISION = 4;
+bool _EXIT = false; int _EXITCODE = 0; bool _CLEARED = false;
+const int _MAXIN = 100; char _INPUT[_MAXIN]; string _INPUTSTR;
+string _CMDF; string _CMDFWIN; string _CMDRUN;
 
 void clear_screen() {
 	#ifdef _WIN32
@@ -73,10 +76,6 @@ int main(int argc, char** argv) {
 	// Prepare kernel enviroment.
 	cout << "Kernel started, getting ready..." << _TERM;
 	settitle("OverOS Shell");
-	int _MAXIN = 100; char _INPUT[_MAXIN];
-	bool _EXIT = false; bool _CLEARED = false;
-	string _INPUTSTR; string _CMDF; string _CMDFWIN;
-	string _CMDRUN;
 	
 	// Let the user know the kernel & shell are ready.
 	clear_screen();
@@ -102,7 +101,7 @@ int main(int argc, char** argv) {
 		} else if (!strcmp(_INPUT, "exitnow")) {
 			// ExitNow
 			cout << "Exiting OverOS now..." << _TERM;
-			_EXIT = true;
+			_EXIT = true; _EXITCODE = 0;
 		} else if (!strcmp(_INPUT, "clr")) {
 			// Clr
 			clear_screen(); _CLEARED = true;
@@ -135,5 +134,5 @@ int main(int argc, char** argv) {
 		}
 	}
 	
-	return 0;
+	return _EXITCODE;
 }
