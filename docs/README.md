@@ -33,4 +33,10 @@ Otherwise, you can download [the latest release](https://github.com/sykeben/over
 
 
 ### Running OverOS
-It's incredebly easy to "boot" OverOS, simply execute `boot` after compiling.
+It's incredebly easy to "boot" OverOS, simply execute `boot` after compiling. 
+
+
+### Screenshot
+![Screenshot](screenshot.png?raw=true) 
+
+This screenshot is from  `v0.1.5` and may be outdated.
