@@ -3,11 +3,7 @@ CC = g++ -Wall -o
 default: all
 
 # Builds every single file, including optional ones.
-all: start base kautorun commands done
-
-# Alerts user to build execution.
-start:
-	$(info ***** BUILD START ****)
+all: base kautorun commands
 
 # Only builds the bootloader and the kernel.
 base: boot.cpp os/kernel.cpp
@@ -24,7 +20,3 @@ kautorun: os/kautorun.cpp
 commands: cmd/hello.cpp
 	$(info -> Building system commands...)
 	$(CC) "cmd/hello" "cmd/hello.cpp"
-	
-# Alerts user to build completion.
-done:
-	$(info ***** BUILD COMPLETE *****)
